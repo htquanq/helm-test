@@ -1,0 +1,20 @@
+ingress:
+  - className: nginx
+    name: default-application
+    host: test.htquanq
+    paths:
+      - path: /
+        serviceName: default-app
+        servicePort: 8080
+      - path: /abc
+        serviceName: second-app
+        servicePort: http
+  - name: second
+    host: abc.htquanq
+    paths:
+      - path: /
+        serviceName: test
+        servicePort: 9090
+      - path: /xyz
+        serviceName: another-test
+        servicePort: https
