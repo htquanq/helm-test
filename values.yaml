@@ -18,3 +18,29 @@ ingress:
       - path: /xyz
         serviceName: another-test
         servicePort: https
+
+testContainers:
+  - name: test
+    image: nginx
+    ports:
+      - containerPort: 80
+        name: http
+        protocol: tcp
+    limits:
+      memory: 100Mib
+      cpu: 2
+    command:
+      - nginx -t
+    args:
+      - /etc/nginx/ngin.conf
+  - name: test2
+    image: nginx2
+    ports:
+      - containerPort: 8080
+        name: application
+        protocol: tcp
+    limits:
+      memory: 200Mib
+      cpu: 3
+    env:
+      - HTQUANQ: 123

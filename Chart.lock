@@ -3,4 +3,4 @@ dependencies:
   repository: https://htquanq.github.io/helm-library
   version: 0.1.0
 digest: sha256:cf7ef377f8db5b25007401f8738e32f4bdcfffb71ffb882547deff206cf2cff7
-generated: "2023-09-21T14:49:03.387401+07:00"
+generated: "2023-09-22T14:04:01.712981+07:00"

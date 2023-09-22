@@ -1,0 +1,15 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "test"
+  labels:
+    name: "test"
+  {{- include "helm-library.common.labels" . | indent 4 }}
+spec:
+  selector:
+    matchLabels:
+      name: "test"
+  template:
+    spec:
+      containers:
+        {{- include "helm-library.container.template" .Values.testContainers | indent 8 }}

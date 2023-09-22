@@ -5,6 +5,7 @@
 # Edit values.yaml and run command below to get the result
 
 ```bash
+rm -f charts/*.tgz
 helm dep up
 helm template . --output-dir rendered
 ```

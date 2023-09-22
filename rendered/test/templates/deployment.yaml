@@ -1,0 +1,97 @@
+---
+# Source: test/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "test"
+  labels:
+    name: "test"    
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/managed-by: Helm
+    helm.sh/chart: test
+    helm.sh/chart-version: "0.1.0"
+spec:
+  selector:
+    matchLabels:
+      name: "test"
+  template:
+    spec:
+      containers:        
+        - name: test
+          image: nginx
+          imagePullPolicy: IfNotPresent
+          startupProbe:    
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            failureThreshold: 3
+            successThreshold: 3
+            httpGet:
+              path: "/"
+              port: 80
+          readinessProbe:    
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            failureThreshold: 3
+            successThreshold: 3
+            httpGet:
+              path: "/"
+              port: 80
+          livenessProbe:    
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            failureThreshold: 3
+            successThreshold: 3
+            httpGet:
+              path: "/"
+              port: 80
+          command:
+            - nginx -t
+          args:
+            - /etc/nginx/ngin.conf
+          resources:
+            limits:
+              memory: "100Mib"
+              cpu: "2"
+          ports:
+            - containerPort: 80
+              protocol: TCP
+              name: http
+        - name: test2
+          image: nginx2
+          imagePullPolicy: IfNotPresent
+          startupProbe:    
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            failureThreshold: 3
+            successThreshold: 3
+            httpGet:
+              path: "/"
+              port: 80
+          readinessProbe:    
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            failureThreshold: 3
+            successThreshold: 3
+            httpGet:
+              path: "/"
+              port: 80
+          livenessProbe:    
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            failureThreshold: 3
+            successThreshold: 3
+            httpGet:
+              path: "/"
+              port: 80
+          env:
+            
+          - name: HTQUANQ
+            value: "123"
+          resources:
+            limits:
+              memory: "200Mib"
+              cpu: "3"
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+              name: application
