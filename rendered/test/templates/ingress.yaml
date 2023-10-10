@@ -72,3 +72,33 @@ spec:
             name: another-test
             port:
               name: https
+---
+# Source: test/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: "htquanq"
+  labels:    
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/managed-by: Helm
+    helm.sh/chart: test
+    helm.sh/chart-version: "0.1.0"
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - asddasdasdsad.htquanq
+    secretName: htquanq-tls
+  rules:
+  - host: asddasdasdsad.htquanq
+    http:
+      paths:      
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: htquanq
+            port:
+              number: 9000

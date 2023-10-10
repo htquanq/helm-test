@@ -1,1 +1,4 @@
+{{- if .Values.extraIngress }}
+{{- $_ := set .Values "ingress" (fromYamlArray (include "helm-library.util.merge-list" (list .Values.ingress .Values.extraIngress))) }}
+{{- end }}
 {{- include "helm-library.ingress.template" . }}

@@ -19,6 +19,14 @@ ingress:
         serviceName: another-test
         servicePort: https
 
+extraIngress:
+  - name: htquanq
+    host: asddasdasdsad.htquanq
+    paths:
+      - path: /
+        serviceName: htquanq
+        servicePort: 9000
+
 testContainers:
   - name: test
     image: nginx
